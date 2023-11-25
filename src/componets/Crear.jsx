@@ -294,12 +294,12 @@ const BookTable = ({ books }) => {
               <td>
                 {editingBook === book ? (
                   <>
-                    <button onClick={handleSaveEdit} className='btn btn-outline-secundary '>Guardar</button>
+                    <button onClick={handleSaveEdit} className='btn btn-info'>Guardar</button>
                     <button onClick={handleCancelEdit} className='btn btn-danger'>Cancelar</button>
                   </>
                 ) : (
                   <>
-                    <button onClick={() => handleEdit(book)} className='btn btn-outline-dark '>Editar</button>
+                    <button onClick={() => handleEdit(book)} className='btn btn-info '>Editar</button>
                     <button onClick={() => handleDelete(book.id)} className='btn btn-danger'>Eliminar</button>
                   </>
                 )}

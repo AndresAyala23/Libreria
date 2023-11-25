@@ -8,20 +8,23 @@ import { BrowserRouter as Router, Routes,Route } from 'react-router-dom'
 
 
 
-export default function App() {
+export default function App({usuario, cerrarSesion, vista, setVista}) {
+
+  const vistas = {
+    "home": <Home/>,
+    "crear": <Crear/>,
+    "libros": <Libros/>
+  }
+
   return (
     <>
-    <Router>
-        <NavBar />
-
+        <NavBar usuario={usuario} cerrarSesion={cerrarSesion} vista={vista} setVista={setVista}/>
         <div className="pages">
-        <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/libros' element={<Libros/>}/>
-        <Route path='/crear' element={<Crear/>}/>
-        </Routes>
-        </div>
-      </Router>
+        {
+          //! Si existe la vista la renderiza, si no muestra el home
+          vistas[vista] || <Home/>
+        }
+      </div>
   </>
   );
 }

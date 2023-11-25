@@ -4,61 +4,73 @@ import "../NavBar.css";
 import logo from '../img/logo1.png'
 import { HamburgetMenuClose, HamburgetMenuOpen } from "../Icons";
 
-function NavBar({usuario, cerrarSesion}) {
+function NavBar({ usuario, cerrarSesion, vista, setVista }) {
   const [click, setClick] = useState(false);
 
-  const handleClick = () => setClick(!click);
+  const handleClick = (nombreVista) => setVista(nombreVista);
+
   return (
     <>
       <nav className="navbar">
         <div className="nav-container">
-          <NavLink exact to="/" className="nav-logo">
-          <img src={logo} alt="example"/>
+          <NavLink to="/" className="nav-logo">
+            <img src={logo} alt="example" />
           </NavLink>
           <h2>BIENVENIDO <span className='text-danger'>{usuario.userName}</span> 🚀</h2>
-         <br/>
-         <button className='btn btn-danger' onClick={() => {cerrarSesion()}}>Cerrar sesión</button>
-         <br />
+          <br />
+          <button className='btn btn-danger' onClick={() => { cerrarSesion() }}>Cerrar sesión</button>
+          <br />
 
-          <ul className={click ? "nav-menu active" : "nav-menu"}>
+          <ul className={click ? "nav-menu" : "nav-menu"}>
             <li className="nav-item">
               <NavLink
-                exact
+
                 to="/"
-                activeClassName="active"
                 className="nav-links"
-                onClick={handleClick}
+                onClick={() => {handleClick('home')}}
               >
                 Inicio
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink
-                exact
+
                 to="/libros"
-                activeClassName="active"
                 className="nav-links"
-                onClick={handleClick}
+                onClick={() => {handleClick('libros')}}
               >
                 Libros
               </NavLink>
             </li>
+
+
+            {/* EJEMPLO DE RUTA ADMIN */}
+
+            {
+              // rol admin o user
+              (usuario.role == "user")
+                ?
+                <li className="nav-item">
+                  <NavLink
+
+                    to="/crear"
+                    className="nav-links"
+                    onClick={() => {handleClick('crear')}}
+                  >
+                    Registro
+                  </NavLink>
+                </li>
+                :
+                ''
+            }
+
+
+
+
             <li className="nav-item">
               <NavLink
-                exact
-                to="/crear"
-                activeClassName="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
-                Registro
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                exact
+
                 to="/contact"
-                activeClassName="active"
                 className="nav-links"
                 onClick={handleClick}
               >
@@ -66,7 +78,7 @@ function NavBar({usuario, cerrarSesion}) {
               </NavLink>
             </li>
           </ul>
-          <div className="nav-icon" onClick={handleClick}>
+          <div className="nav-icon" onClick={() => {handleClick('contactanos')}}>
             {/* <i className={click ? "fas fa-times" : "fas fa-bars"}></i> */}
 
             {click ? (

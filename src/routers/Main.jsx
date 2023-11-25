@@ -3,12 +3,12 @@ import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import App from "../App"
 import { Login } from "../pages/Login/Login";
 import { Registrarse } from "../pages/Login/Registrarse";
-
 export const Main = () => {
 
 
   const [usuario, setUsuario] = useState({})
   const [autenticado, setAutenticado] = useState(false)
+  const [vista, setVista] = useState('home')
 
   useEffect(() => {
     const usuario = getLocalStorage('usuario')
@@ -44,8 +44,8 @@ export const Main = () => {
       {
         (autenticado == true) ? (
           <>
-            <Route path="/" element={<App usuario={usuario} cerrarSesion={cerrarSesion}/>}/>
-            <Route path="*" element={<Navigate to={'/'}/>}/>
+            <Route path="/" element={<App usuario={usuario} cerrarSesion={cerrarSesion} vista={vista} setVista={setVista}/>}/>
+            <Route path="/*" element={<Navigate to={'/'}/>}/>
           </>
         ): (
           <>
