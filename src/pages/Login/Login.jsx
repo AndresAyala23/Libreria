@@ -71,7 +71,7 @@ export const Login = ({saveUsuarioToLocalStorage, navigate}) => {
               </div>
               <div className="col-12 col-md-9 mt-3">
                   <label htmlFor="passwordInput" className='form-label fw-bold'>Contraseña: </label>
-                  <input type="password" className="form-control" id="passwordInput" name='password' value={form.password} onChange={onChangeField} minLength={8} required></input>
+                  <input type="password" className="form-control" id="passwordInput" name='password' value={form.password} onChange={onChangeField} minLength={4} required></input>
               </div>
 
               <button type='submit' className='col-12 col-md-9 mt-4 btn btn-primary'>Ingresar</button>

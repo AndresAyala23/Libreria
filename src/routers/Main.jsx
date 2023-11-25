@@ -44,8 +44,8 @@ export const Main = () => {
       {
         (autenticado == true) ? (
           <>
-            <Route path="/home" element={<App usuario={usuario} cerrarSesion={cerrarSesion}/>}/>
-            <Route path="*" element={<Navigate to={'/home'}/>}/>
+            <Route path="/" element={<App usuario={usuario} cerrarSesion={cerrarSesion}/>}/>
+            <Route path="*" element={<Navigate to={'/'}/>}/>
           </>
         ): (
           <>

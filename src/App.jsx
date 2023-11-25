@@ -1,17 +1,28 @@
 import { useQuery, gql } from '@apollo/client';
 import React from 'react';
+import Home from './componets/Home'
+import Libros from './componets/Libros'
+import Crear from './componets/Crear'
+import NavBar from './componets/NavBar';
+import { BrowserRouter as Router, Routes,Route } from 'react-router-dom'
 
 
 
-export default function App({usuario, cerrarSesion}) {
+export default function App() {
   return (
-    <div>
-    <h2>BIENVENIDO <span className='text-danger'>{usuario.userName}</span> 🚀</h2>
-    <br/>
-    <button className='btn btn-danger' onClick={() => {cerrarSesion()}}>Cerrar sesión</button>
-    <br />
-    <UserNames/>
-  </div>
+    <>
+    <Router>
+        <NavBar />
+
+        <div className="pages">
+        <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/libros' element={<Libros/>}/>
+        <Route path='/crear' element={<Crear/>}/>
+        </Routes>
+        </div>
+      </Router>
+  </>
   );
 }
 
