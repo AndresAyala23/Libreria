@@ -1,0 +1,27 @@
+html, body {
+  min-height: 100vh;
+  height: auto;
+  padding: 0;
+  margin: 0;
+}
+
+#root {
+  padding: 0;
+  margin: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  position: relative;
+}
+
+#loginDiv {
+  position: relative;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-image: linear-gradient(to right, #002aff6d, rgba(0, 162, 255, 0.39)), url('https://s1.1zoom.me/big3/793/Library_Book_532388_1920x1080.jpg');
+  background-size: cover;
+  height: auto;
+}
+
+#cardLogin {
+  height: 65vh;
+}

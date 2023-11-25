@@ -3,11 +3,13 @@ import React from 'react';
 
 
 
-export default function App() {
+export default function App({usuario, cerrarSesion}) {
   return (
     <div>
-    <h2>My first Apollo app ejemplo  🚀</h2>
+    <h2>BIENVENIDO <span className='text-danger'>{usuario.userName}</span> 🚀</h2>
     <br/>
+    <button className='btn btn-danger' onClick={() => {cerrarSesion()}}>Cerrar sesión</button>
+    <br />
     <UserNames/>
   </div>
   );

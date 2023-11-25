@@ -2,11 +2,10 @@ import { useEffect, useState } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import './App.css'
 import App from './App';
+import {BrowserRouter} from 'react-router-dom'
 import { ApolloClient, InMemoryCache, ApolloProvider, gql, useQuery, HttpLink } from '@apollo/client';
-
-
-
-
+import { Login } from './pages/Login/Login';
+import {Main} from './routers/Main'
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -37,7 +36,9 @@ const client = new ApolloClient({
   const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
+  <BrowserRouter>
+    <ApolloProvider client={client}>
+      <Main />
+    </ApolloProvider>
+  </BrowserRouter>
 );
